@@ -1,7 +1,7 @@
-Arduino Nano ---> Remarks      
-     D5             RX
-     D6             TX
-     D9         Trigger Key
+/*
+ Arduino Nano ---> Remarks      
+     D2             RX
+     D3             TX
 ADJUST TO HC-05 CONNECTION
 
   Step:
@@ -17,10 +17,18 @@ ADJUST TO HC-05 CONNECTION
     and type "AT" and click SEND. You should see an "OK"
   7.If you don't see an "OK" check your wiring.
 
+ SLAVE (CHARGING STATION)
   Reset to Default setting ---> AT+ORGL
   Change device name       ---> AT+NAME:xxxxx
   Change baudrate          ---> AT+UART:115200,1,0
-  Set Role Master-Slave    ---> AT+ROLE:0.Slave/1.Master
-  Check Bluetooth Address  ---> AT+ADDR?
-  Set Binding              ---> AT+BIND:xxxx,xx,xxxxxx (Bluetooth Address Target binding)
+  Set Role Slave           ---> AT+ROLE:0
+  Check Bluetooth Address  ---> AT+ADDR? ----> you will get hc-05 mac address, input at Master AT+BIND
+
+ MASTER (ROBOT)
+  Reset to Default setting ---> AT+ORGL
+  Change device name       ---> AT+NAME:xxxxx
+  Change baudrate          ---> AT+UART:115200,1,0
+  Set Role Master          ---> AT+ROLE:1
+  Set Binding              ---> AT+BIND:xxxx,xx,xxxxxx (Bluetooth Address Target binding/Slave mac address)
+
 */
